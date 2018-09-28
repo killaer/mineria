@@ -26,6 +26,7 @@ class CreateUsuarioSchema extends Migration
             $table->string('username')->unique();
             $table->boolean('active')->default(false);
             $table->primary('id_e');
+            $table->rememberToken();
             $table->foreign('id_e')->references('id')->on('entidad');
         });
         

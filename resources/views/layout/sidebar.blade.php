@@ -1,5 +1,10 @@
 <section>
     <!-- Left Sidebar -->
+    <section style="display:none">
+    <form id="logoutform" action="/logout" method="POST">
+        {{ csrf_field() }}
+    </form>
+    </section>
     <aside id="leftsidebar" class="sidebar">
         <!-- ESTA ES LA PARTE DE LA INFORMACIÓN DE USUARIO -->
         <!-- User Info -->
@@ -15,7 +20,7 @@
                     <ul class="dropdown-menu pull-right">
                         <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
                         <li role="seperator" class="divider"></li>
-                        <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                        <li><a onclick="document.getElementById('logoutform').submit()"><i class="material-icons">input</i>Sign Out</a></li>
                     </ul>
                 </div>
             </div>
