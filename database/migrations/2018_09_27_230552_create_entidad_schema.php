@@ -19,12 +19,11 @@ class CreateEntidadSchema extends Migration
         });
 
         Schema::create('entidad', function (Blueprint $table) {
-            $table->string('id');
+            $table->increments('id');
             $table->integer('tipo_e');
             $table->string('cod_e')->index();
             $table->boolean('activo_e')->default(true);
             $table->timestamps();
-            $table->primary('id');
             $table->foreign('tipo_e')->references('id')->on('tipo_entidad');
         });
     }

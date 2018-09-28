@@ -20,7 +20,7 @@ class CreateUsuarioSchema extends Migration
         });
 
         Schema::create('usuario', function (Blueprint $table) {
-            $table->string('id_e');
+            $table->integer('id_e')->unique();
             $table->string('correo')->index();
             $table->string('password', 64);
             $table->string('username')->unique();
@@ -31,7 +31,7 @@ class CreateUsuarioSchema extends Migration
         
         Schema::create('usuario_perfil', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('id_e');
+            $table->integer('id_e');
             $table->integer('id_perfil');
             $table->foreign('id_e')->references('id_e')->on('usuario');
             $table->foreign('id_perfil')->references('id')->on('perfil');

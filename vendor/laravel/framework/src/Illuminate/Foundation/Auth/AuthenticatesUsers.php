@@ -44,13 +44,12 @@ trait AuthenticatesUsers
             }
 
             if ($this->attemptLogin((object) $label)) {
-                Session::forget('login');
-                return response()->json(['success' => 'Sesión Iniciada']);
+                return $this->sendLoginResponse($request, $label);
             }
 
            $this->incrementLoginAttempts($request, $label);
 
-           throw new \Exception('Usuario incorrecto');
+           throw new \Exception('Usuario o contraseña incorrectos');
         } catch(\Exception $e){
             return response()->json(['error' => $e->getMessage()]);
         }
@@ -82,10 +81,12 @@ trait AuthenticatesUsers
      */
     protected function attemptLogin(\stdClass $data)
     {
-        return Auth::guard()->attempt([
+        $success = Auth::attempt([
             $this->username() => $data->username,
             'password' => $data->password,
         ]);
+
+        return $success;
     }
 
     /**
@@ -105,16 +106,16 @@ trait AuthenticatesUsers
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    protected function sendLoginResponse(Request $request)
+    protected function sendLoginResponse(Request $request, array $data)
     {
+        Session::forget('login');
+
         $request->session()->regenerate();
 
-        $this->clearLoginAttempts($request);
+        $this->clearLoginAttempts($request, $data);
 
-
-
-        return $this->authenticated($request, $this->guard()->user())
-                ?: redirect()->intended($this->redirectPath());
+        return $this->authenticated($request, $this->guard()->user()) 
+            ?: response()->json(['success' => 'La Sesión ha iniciado', 'path' => $this->redirectPath()]);
     }
 
     /**

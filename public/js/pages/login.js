@@ -16,9 +16,9 @@ $(function(){
                 'data':$('#login').serialize(),
                 'success': response => {
                     if(response.success){
-                        return swal(response.success,' ','success').then(res => location.href = "/home")
+                        return swal(response.success,' ','success').then(res => location.href = response.path)
                     } else if(response.error) {
-                        return swal(response.error, '','error');
+                        return swal('Intente nuevamente', response.error ,'error');
                     }
                 }
             });
