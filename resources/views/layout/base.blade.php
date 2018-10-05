@@ -18,6 +18,9 @@
 </head>
 
 <body class="theme-indigo" ng-controller="appController">
+
+    @inject('SessionService', '\App\Services\SessionService')
+
     @include('layout.loader')
     <div class="overlay"></div>
     @include('layout.topbar')

@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Locacion extends Model
 {
-    protected $table = 'locacion';
+    protected $table = 'location';
     protected $primaryKey = 'id_e';
     public $timestamps = false;
 
     protected $fillable = [
-        'id_e', 'descripcion'
+        'id_e', 'descripcion','cod_location', 'nombre'
     ];
 
     public function entidad(){

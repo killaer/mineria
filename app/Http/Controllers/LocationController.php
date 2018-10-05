@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Traits\SaverTools;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LocationController extends Controller
 {
@@ -40,8 +42,27 @@ class LocationController extends Controller
      * @param Request $request
      * @return View
      */
-    public function saveAction(Request $request)
+    public function saveAction(\App\Http\Requests\StoreLocation $request)
     {
+        try {
+            
+            DB::beginTransaction();
+            
+            $this->saveLocation($request->all());
+            
+            DB::commit();
 
+            return response()->json([
+                'success' => 'Se ha registrado exitosamente la locación',
+            ]);
+
+        } catch(\Exception $e){
+            
+            DB::rollback();
+            
+            return response()->json([
+                'error' => $e->getMessage()    
+            ]);
+        }
     }
 }

@@ -22,7 +22,7 @@ class Entidad extends Model
         return $this->hasOne(\App\Worker::class, 'id_e');
     }
 
-    public function Item(){
+    public function item(){
         return $this->hasOne(\App\Item::class, 'id_e');
     }
 

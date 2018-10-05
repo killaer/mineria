@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // dd(\Illuminate\Support\Facades\Session::get('perfiles'));
         return view('index');
     }
 }

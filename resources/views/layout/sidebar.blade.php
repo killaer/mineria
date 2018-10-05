@@ -36,6 +36,7 @@
                         <span>Página Principal</span>
                     </a>
                 </li>
+                @if($SessionService->isAdmin())
                 <li>
                     <a href="#" class="menu-toggle">
                         <i class="material-icons">build</i>
@@ -64,48 +65,7 @@
                         </li>
                     </ul>
                 </li>
-                {{-- <li>
-                    <a href="#" class="menu-toggle">
-                        <i class="material-icons">trending_down</i>
-                        <span>Multi Level Menu</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="#">
-                                <span>Menu Item</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>Menu Item - 2</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="menu-toggle">
-                                <span>Level - 2</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="#">
-                                        <span>Menu Item</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="menu-toggle">
-                                        <span>Level - 3</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        <li>
-                                            <a href="#">
-                                                <span>Level - 4</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li> --}}
+                @endif
             </ul>
         </div>
         <!-- #Menu -->

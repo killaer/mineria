@@ -13,7 +13,6 @@ class FirstUserSeed extends Seeder
      */
     public function run()
     {
-        // ryan
         $entidad = Entidad::create([
             'tipo_e' => 1,
             'cod_e' => 'USUARIO_1',
@@ -24,6 +23,7 @@ class FirstUserSeed extends Seeder
         $usuario->correo = 'snavarro169@gmail.com';
         $usuario->password = bcrypt('123456');
         $usuario->username = 'rphilbert';
+        $usuario->apelnomb = 'Ryan Philbert';
         $usuario->active = true;
         $entidad->usuario()->save($usuario);
 
@@ -32,7 +32,6 @@ class FirstUserSeed extends Seeder
             'id_perfil' => 1,
         ]);
 
-        //orestes
         $entidad = Entidad::create([
             'tipo_e' => 1,
             'cod_e' => 'USUARIO_2',
@@ -43,6 +42,7 @@ class FirstUserSeed extends Seeder
         $usuario->correo = 'orestesm20@gmail.com';
         $usuario->password = bcrypt('123456');
         $usuario->username = 'ogutierrez';
+        $usuario->apelnomb = 'Orestes Gutierrez';
         $usuario->active = true;
         $entidad->usuario()->save($usuario);
         

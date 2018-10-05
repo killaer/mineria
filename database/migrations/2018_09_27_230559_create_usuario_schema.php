@@ -21,9 +21,10 @@ class CreateUsuarioSchema extends Migration
 
         Schema::create('usuario', function (Blueprint $table) {
             $table->integer('id_e')->unique();
-            $table->string('correo')->index();
+            $table->string('correo')->index()->unique();
             $table->string('password', 64);
             $table->string('username')->unique();
+            $table->string('apelnomb')->index();
             $table->boolean('active')->default(false);
             $table->primary('id_e');
             $table->rememberToken();

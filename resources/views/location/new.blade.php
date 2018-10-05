@@ -14,29 +14,29 @@
 <section ng-controller="newLocation">
     <div class="card">
         <div class="body">
-            <form id="new_form" novalidate>
+            <form name="newForm" id="newForm" novalidate>
             <div class="form-group form-float">
                 <div class="form-line">
-                    <input name="nombre" ng-model="nombre" ng-maxlength="60" type="text" class="form-control" required>
+                    <input name="nombre" ng-model="location.name" ng-maxlength="60" type="text" class="form-control" required>
                     <label class="form-label">Nombre de la Locación</label>
                 </div>
-                <span ng-show="newForm.nombre.$dirty" class="error">Nombre Invalido</span>
+                <span ng-show="newForm.nombre.$invalid" class="error">Nombre Invalido</span>
             </div>
             <div class="form-group form-float">
                 <div class="form-line">
-                    <input type="text" ng-model="codigo" ng-keypress="validateNumber($event)" ng-maxlength="10" maxlength="10" class="form-control" required>
+                    <input type="text" name="codigo" ng-model="location.code" ng-maxlength="10" maxlength="10" numbers-only class="form-control" required>
                     <label class="form-label">Código de la Locacion</label>
                 </div>
-                <span ng-show="newForm.codigo.$dirty" class="error">Código Invalido</span>
+                <span ng-show="newForm.codigo.$invalid" class="error">Código Invalido</span>
             </div>
             <div class="form-group form-float">
                 <div class="form-line">
-                    <textarea cols="30" ng-model="detalle" ng-maxlength="128" maxlength="128" rows="10" class="form-control" required></textarea>
+                    <textarea cols="30" name="detalle" ng-model="location.desc" ng-maxlength="128" maxlength="128" rows="10" class="form-control" required></textarea>
                     <label class="form-label">Detalles de Locacion</label>
                 </div>
-                <span ng-show="newForm.detalle.$dirty" class="error">Detalle Invalido</span>
+                <span ng-show="newForm.detalle.$invalid" class="error">Detalle Invalido</span>
             </div>
-            <button type="button" class="btn btn-primary m-t-15 waves-effect">Agregar Locacion</button>
+            <button type="button" ng-click="submitForm()" class="btn btn-primary m-t-15 waves-effect">Agregar Locacion</button>
             </form>
         </div>
     </div>
@@ -44,5 +44,6 @@
 @endsection
 
 @section('scripts')
+<script src="{{ asset('plugins/sweetalert/sweetalert.min.js') }}"></script>
 <script src="{{ asset('js/pages/location/new.js') }}"></script>
 @endsection

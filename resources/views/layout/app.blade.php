@@ -12,8 +12,10 @@
     <link href="{{ asset('plugins/node-waves/waves.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/animate-css/animate.css') }}" rel="stylesheet">
     @yield('styles')
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('plugins/jquery.min.js') }}"></script>
+    <script src="{{ asset('plugins/angular.min.js') }}"></script>
     <script src="{{ asset('plugins/node-waves/waves.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
     @yield('scripts')
 </head>
