@@ -1,8 +1,4 @@
-﻿/* RYAN CUSTOM */
-
-/* END RYAN CUSTOM */
-
-/* Navbar ====================================== */
+﻿/* Navbar ====================================== */
 @import url(materialize.css);
 .navbar {
   font-family: "Roboto", sans-serif;
@@ -8044,3 +8040,8 @@ html.ie11 .dropdown-menu ul.menu li a {
 html.ie11 .bs-searchbox .form-control {
   width: 90%; }
 
+/* RYAN PHILBERT CUSTOM STYLES*/
+span.error {float:right;color:red;transition:1s;margin-top:5px}
+div.card {padding:20px 10px}
+ul.menu li {list-style:none}
+/* ## */

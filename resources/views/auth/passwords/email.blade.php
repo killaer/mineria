@@ -13,8 +13,7 @@
             <div class="body">
                 <form id="forgot_password" method="POST">
                     <div class="msg">
-                        <b>Enter your email address that you used to register. We'll send you an email with your username and a
-                        link to reset your password.</b>
+                        <b>Introduzca su direccion de correo de registro, al cual enviaremos un correo de verificación</b>
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon">
@@ -25,10 +24,10 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">RESET MY PASSWORD</button>
+                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">REINICIAR CONTRASEÑA</button>
 
                     <div class="row m-t-20 m-b--5 align-center">
-                        <a href="sign-in.html">Sign In!</a>
+                        <a href="{{ route('login') }}"><b>INICIAR SESION</b></a>
                     </div>
                 </form>
             </div>

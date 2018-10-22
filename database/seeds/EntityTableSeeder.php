@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use App\Entidad;
 use App\Usuario;
 
@@ -14,27 +15,27 @@ class EntityTableSeeder extends Seeder
     public function run()
     {
         for($a = 0; $a <= 20; $a++){
-            $nro = rand(1,3);
-            $counter = Entidad::where('tipo_e', $nro)->count() + 1;
-            $nombre = (string) ($this->type[$nro].'_'. $counter);
+            
+            $counter = Entidad::where('tipo_e', 1)->count() + 1;
+            $nombre = (string) ('USUARIO_'. $counter);
+            
             $entidad = Entidad::create([
-                'tipo_e' => $nro,
+                'tipo_e' => 1,
                 'cod_e' => $nombre,
-                'activo_e' => false
+                'activo_e' => true
             ]);
-            if($nro == 3){
-                $usuario = new Usuario;
-                $usuario->correo = str_random(10).'@gmail.com';
-                $usuario->password = bcrypt('secret');
-                $usuario->username = str_random(10);
-                $entidad->usuarios()->save($usuario);
-            }
+            
+            $usuario = new Usuario;
+            $usuario->correo = str_random(10).'@gmail.com';
+            $usuario->password = bcrypt('secret');
+            $usuario->username = str_random(10);
+            $usuario->apelnomb = str_random(11). " ". str_random('5');
+            $entidad->usuario()->save($usuario);
+
+            DB::table('usuario_perfil')->insert([
+                'id_usuario' => $usuario->id_e,
+                'id_perfil' => 3,
+            ]);
         }
     }
-
-    public $type = [
-        1 => 'MAQUINA',
-        2 => 'LOCACION',
-        3 => 'USUARIO'
-    ];
 }

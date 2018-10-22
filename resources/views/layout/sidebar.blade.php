@@ -1,24 +1,24 @@
 <section>
     <!-- Left Sidebar -->
-    <section style="display:none">
+    <section class="hide">
     <form id="logoutform" action="/logout" method="POST">
         {{ csrf_field() }}
     </form>
     </section>
     <aside id="leftsidebar" class="sidebar">
-        <!-- ESTA ES LA PARTE DE LA INFORMACIÓN DE USUARIO -->
+        
         <!-- User Info -->
         <div class="user-info">
             <div class="image">
-                <img src="images/user.png" width="48" height="48" alt="User" />
             </div>
             <div class="info-container">
-                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                <div class="email">john.doe@example.com</div>
+                <div class="name" style="text-transform:uppercase" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>{{ Auth::user()->username }}</b></div>
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>{{ Auth::user()->apelnomb }}</b></div>
+                <div class="email"><b>{{ Auth::user()->correo }}</b></div>
                 <div class="btn-group user-helper-dropdown">
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
-                        <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                        <li><a href="#{{-- route('user_profile') --}}"><i class="material-icons">person</i>Profile</a></li>
                         <li role="seperator" class="divider"></li>
                         <li><a onclick="document.getElementById('logoutform').submit()"><i class="material-icons">input</i>Sign Out</a></li>
                     </ul>
@@ -26,75 +26,78 @@
             </div>
         </div>
         <!-- #User Info -->
+        
         <!-- Menu -->
         <div class="menu">
             <ul class="list">
                 <li class="header">NAVEGACIÓN PRINCIPAL</li>
                 <li class="active">
-                    <a href="index.html">
+                    <a href="{{ route('home') }}">
                         <i class="material-icons">home</i>
                         <span>Página Principal</span>
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">content_copy</i>
-                        <span>Example Pages</span>
+                    <a href="#" class="menu-toggle">
+                        <i class="material-icons">build</i>
+                        <span>Workers</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="pages/examples/sign-in.html">Sign In</a>
+                            <a href="{{ route('new_worker') }}">Nuevo Worker</a>
                         </li>
                         <li>
-                            <a href="pages/examples/sign-up.html">Sign Up</a>
-                        </li>
-                        <li>
-                            <a href="pages/examples/forgot-password.html">Forgot Password</a>
-                        </li>
-                        <li>
-                            <a href="pages/examples/blank.html">Blank Page</a>
-                        </li>
-                        <li>
-                            <a href="pages/examples/404.html">404 - Not Found</a>
-                        </li>
-                        <li>
-                            <a href="pages/examples/500.html">500 - Server Error</a>
+                            <a href="{{ route('workers') }}">Workers Registrados</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
+                    <a href="#" class="menu-toggle">
+                        <i class="material-icons">map</i>
+                        <span>Locaciones</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="{{ route('new_location') }}">Nueva Locación</a>
+                        </li>
+                        {{-- <li>
+                            <a href="{{ route('locations') }}">Locaciones Registradas</a>
+                        </li> --}}
+                    </ul>
+                </li>
+                {{-- <li>
+                    <a href="#" class="menu-toggle">
                         <i class="material-icons">trending_down</i>
                         <span>Multi Level Menu</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="#">
                                 <span>Menu Item</span>
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="#">
                                 <span>Menu Item - 2</span>
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
+                            <a href="#" class="menu-toggle">
                                 <span>Level - 2</span>
                             </a>
                             <ul class="ml-menu">
                                 <li>
-                                    <a href="javascript:void(0);">
+                                    <a href="#">
                                         <span>Menu Item</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);" class="menu-toggle">
+                                    <a href="#" class="menu-toggle">
                                         <span>Level - 3</span>
                                     </a>
                                     <ul class="ml-menu">
                                         <li>
-                                            <a href="javascript:void(0);">
+                                            <a href="#">
                                                 <span>Level - 4</span>
                                             </a>
                                         </li>
@@ -103,17 +106,19 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
         <!-- #Menu -->
+        
         <!-- Footer -->
         <div class="legal">
             <div class="copyright">
-                &copy; 2018 <a href="javascript:void(0);">AdminBSB - Editado</a>.
+                <b>&copy; 2018 </b><a href="#">Edited with <i class="material-icons" style="font-size:15px;color:red">favorite</i> by <b>Emroy</b></a>.
             </div>
         </div>
         <!-- #Footer -->
+
     </aside>
     <!-- #END# Left Sidebar -->
     <!-- Right Sidebar -->

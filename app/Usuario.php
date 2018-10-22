@@ -14,7 +14,7 @@ class Usuario extends Authenticatable
     public $timestamps = false;
 
     protected $fillable = [
-        'id_e','correo', 'password','active','username'
+        'id_e','correo', 'password','active','username','apelnomb'
     ];
 
     protected $hidden = [
@@ -23,5 +23,9 @@ class Usuario extends Authenticatable
 
     public function entidad(){
         return $this->BelongsTo(\App\Entidad::class, 'id');
+    }
+
+    public function UsuarioPerfil(){
+        return $this->hasMany(\App\UsuarioPerfil::class, 'id_usuario');
     }
 }

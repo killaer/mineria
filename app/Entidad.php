@@ -14,7 +14,19 @@ class Entidad extends Model
         'id','tipo_e', 'cod_e', 'activo_e',
     ];
 
-    public function usuarios(){
+    public function usuario(){
         return $this->hasOne(\App\Usuario::class, 'id_e');
+    }
+
+    public function worker(){
+        return $this->hasOne(\App\Worker::class, 'id_e');
+    }
+
+    public function item(){
+        return $this->hasOne(\App\Item::class, 'id_e');
+    }
+
+    public function locacion(){
+        return $this->hasOne(\App\Locacion::class, 'id_e');
     }
 }

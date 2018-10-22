@@ -56,7 +56,7 @@
                     </div>
                     {{-- <div class="form-group">
                         <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-pink">
-                        <label for="terms">I read and agree to the <a href="javascript:void(0);">terms of usage</a>.</label>
+                        <label for="terms">I read and agree to the <a href="#">terms of usage</a>.</label>
                     </div> --}}
                     <button class="btn btn-block btn-lg bg-pink waves-effect" id="registerBtn">REGISTRAR</button>
 

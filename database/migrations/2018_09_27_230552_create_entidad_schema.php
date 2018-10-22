@@ -15,13 +15,13 @@ class CreateEntidadSchema extends Migration
     {
         Schema::create('tipo_entidad', function(Blueprint $table){
             $table->increments('id');
-            $table->string('descripcion');
+            $table->string('descripcion', 128);
         });
 
         Schema::create('entidad', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('tipo_e');
-            $table->string('cod_e')->index();
+            $table->string('cod_e', 15)->index()->nullable();
             $table->boolean('activo_e')->default(true);
             $table->timestamps();
             $table->foreign('tipo_e')->references('id')->on('tipo_entidad');
