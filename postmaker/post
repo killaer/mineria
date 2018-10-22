@@ -1,0 +1,71 @@
+#! /usr/bin/env node
+
+const queryString = require('querystring')
+const http = require('http')
+const fs = require('fs')
+const p = require('path')
+
+function postCode(codeString) {
+    
+    var post_data = queryString.stringify({
+        'data': codeString
+    })
+
+    var options = {
+        host: '127.0.0.1',
+        port: '8000',
+        path: '/api/reporte',
+        method: 'POST',
+        headers: {
+            'Content-type':'application/x-www-form-urlencoded',
+            'Content-Length': Buffer.byteLength(post_data)
+        }
+    }
+
+    var post_req = http.request(options, res => {
+        
+        res.setEncoding('utf8')
+        fs.unlink(p.join(__dirname, 'index.html'), err => (err) ? console.log(err):'')
+        res.on('data', chunk => {            
+            fs.appendFile(p.join(__dirname, 'index.html'), chunk, err => {
+                if(err) throw err
+            })
+        })
+        return console.log('Data Stored successfully - 200');
+    })
+
+    post_req.write(post_data)
+    post_req.end()
+
+}
+
+function randomNumber(){
+    return Math.floor(Math.random()* 100000000);
+}
+
+fs.readFile(p.join(__dirname, 'report.json'), 'utf-8', (err, data) => {
+    
+    if(err){
+        console.log(err)
+        process.exit('Error al leer el archivo')
+    }
+
+    json = JSON.parse(data);
+    json.fecha_ms = Math.floor(parseInt((new Date).getTime()))
+    new_json = JSON.stringify(json);
+    postCode(new_json);
+    console.log('POST - localhost:8000');
+
+    setInterval(function(){
+
+        json = JSON.parse(data);
+        json.fecha_ms = Math.floor(parseInt((new Date).getTime()))
+        new_json = JSON.stringify(json);
+        
+        postCode(new_json);
+        
+        console.log('POST - localhost:8000');
+
+    }, 5000);
+
+})
