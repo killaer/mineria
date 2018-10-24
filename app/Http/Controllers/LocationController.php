@@ -57,13 +57,13 @@ class LocationController extends Controller
             ]);
 
             if($validator->fails()){
-                throw new \EntitySavingException($validator->errors());
+                throw new \Exception($validator->errors());
             }
 
             $locacion = $this->save(self::LOCATION, (object) $request->all());
 
             if(!$locacion){
-                throw new \EntitySavingException('Error al guardar la entidad');
+                throw new \Exception('Error al guardar la entidad');
             }
 
             DB::commit();
@@ -72,7 +72,7 @@ class LocationController extends Controller
                 'success' => 'Se ha guardado la locación exitosamente'
             ]);
 
-        } catch( \EntitySavingException $e ) {
+        } catch( \Exception $e ) {
 
             DB::rollBack();
 

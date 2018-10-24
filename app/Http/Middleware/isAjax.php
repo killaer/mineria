@@ -15,9 +15,9 @@ class isAjax
      */
     public function handle($request, Closure $next)
     {
-        if(!$request->ajax()){
+        /*if(!$request->ajax()){
             throw new \Exception('Request Error');
-        }
+        }*/
         return $next($request);
     }
 }
